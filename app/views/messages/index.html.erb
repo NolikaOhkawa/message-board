@@ -17,10 +17,11 @@
 
 <%= form_for(Message.new) do |f| %>
   名前:
-<%= f.text_field :name %>
+<%= f.text_area :name, 
+style: "border: 1px solid #ccc; height: 22px; vertical-align: middle;"  %>
 
   内容:
-<%= f.text_field :body %>
+<%= f.text_area :body, style: "border: 1px solid #ccc; height: 22px; vertical-align: middle;" %>
 <%= f.submit class:"btn btn-sm btn-primary" %>
 
 <% end %>
