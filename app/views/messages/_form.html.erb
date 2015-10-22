@@ -1,0 +1,36 @@
+<%#
+@message は、viewで表示が行われる前に
+`messages_controller`  の `create` アクションの `@message.save` の部分で
+保存と同時にバリデーションが行われています。
+
+バリデーションでエラーになると、 
+`@message.errors` の中にエラー内容が入るので、 
+form_for はそれを見て、エラーがある項目のみ、 
+`<div class='field_with_errors’>` という divで囲みます。
+
+form_for の引数が `Message.new` の場合は、
+値を受けるためのオブジェクトはできていますが、
+エラー情報が入っていないため、テキストボックスなどが 
+`<div class='field_with_errors’>` で囲まれず、赤枠が出ていなかった、という感じです。
+%>
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.present? %>
+    <div class="alert alert-danger">
+        <%= alert %>
+        <ul>
+            <% @message.errors.full_messages.each do |full_message| %>
+              <li>
+                <%= full_message %>
+              </li>
+            <% end %>
+        </ul>
+    </div>
+  <% end %>
+  名前:
+<%= f.text_field :name %>
+
+  内容:
+<%= f.text_field :body %>
+<%= f.submit class:"btn btn-sm btn-primary" %>
+
+<% end %>
