@@ -14,14 +14,30 @@
 </div>
 
 
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="inputname" class="col-sm-2 control-label">NAME</label>
+        <div class="col-sm-10">
+            <%= form_for(Message.new) do |f| %>
+            <%= f.text_field :name , class:"form-control" , id:"inputname" , placeholder:"name" %>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <label for="inputmessage" class="col-sm-2 control-label">MESSAGE</label>
+        <div class="col-sm-10">
+            <%= f.text_area :body , class:"form-control" , id:"inputmessage" , placeholder:"message" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit class:"btn btn-sm btn-primary" %>
+    </div>
+        </div>
 
-<%= form_for(Message.new) do |f| %>
-  名前:
-<%= f.text_area :name, 
-style: "border: 1px solid #ccc; height: 22px; vertical-align: middle;"  %>
+    <% end %>
+</form>
 
-  内容:
-<%= f.text_area :body, style: "border: 1px solid #ccc; height: 22px; vertical-align: middle;" %>
-<%= f.submit class:"btn btn-sm btn-primary" %>
-
-<% end %>
+            <%# style = "display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;
+            line-height: 1.5; color:#555; background-color: #fff; border: 1px solid #ccc;
+            vertical-align: middle;" %>
