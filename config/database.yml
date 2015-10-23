@@ -9,7 +9,7 @@ default: &default
   pool: 5
   timeout: 5000
 
-development:
+development: #開発
   <<: *default
   database: db/development.sqlite3
 
@@ -20,6 +20,8 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
+production: #本番
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
