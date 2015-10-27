@@ -2,42 +2,41 @@
     <div class="panel-heading">
         メッセージ一覧
     </div>
-
- <div class="panel-body">
-    <% @messages.each do |message| %>
-    <span class="label label-info"><%= message.name %></span>
-    <%= message.body %>
-  <br>
-  <%# "<%="の=は結果を埋め込むか否かの違い %>
-  <% end %>    
- </div>
+    <div class="panel-body">
+        <% @messages.each do |message| %>
+            <span class="label label-info"><%= message.name %></span>
+            <%= message.body %>
+            <br>
+            <%# "<%="の=は結果を埋め込むか否かの違い %>
+        <% end %>
+    </div>
 </div>
 
 
-<form class="form-horizontal">
-    <div class="form-group">
-        <label for="inputname" class="col-sm-2 control-label">NAME</label>
-        <div class="col-sm-10">
-            <%= form_for(Message.new) do |f| %>
+
+<div class="form-group">
+    <label for="inputname" class="col-sm-2 control-label">NAME</label>
+    <div class="col-sm-10">
+        <%= form_for(Message.new, html: {class: "form-horizontal"}) do |f| %>
             <%= f.text_field :name , class:"form-control" , id:"inputname" , placeholder:"name" %>
-        </div>
-        
     </div>
-    <div class="form-group">
-        <label for="inputmessage" class="col-sm-2 control-label">MESSAGE</label>
-        <div class="col-sm-10">
+</div>
+    
+<div class="form-group">
+    <label for="inputmessage" class="col-sm-2 control-label">MESSAGE</label>
+    <div class="col-sm-10">
             <%= f.text_area :body , class:"form-control" , id:"inputmessage" , placeholder:"message" %>
-        </div>
     </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
             <%= f.submit class:"btn btn-sm btn-primary" %>
     </div>
-        </div>
+</div>
 
-    <% end %>
-</form>
+        <% end %>
 
-            <%# style = "display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;
-            line-height: 1.5; color:#555; background-color: #fff; border: 1px solid #ccc;
-            vertical-align: middle;" %>
+<%# style = "display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px;
+    line-height: 1.5; color:#555; background-color: #fff; border: 1px solid #ccc;
+    vertical-align: middle;" %>
