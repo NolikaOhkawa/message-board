@@ -37,7 +37,12 @@ class MessagesController < ApplicationController
     redirect_to root_path, notice: 'メッセージを削除しました'
   end
 
-  
+  #privateについて
+  #ユーザがブラウザから意図せぬパラメータを送ってきた場合に、
+  #リクエストパラメータを検証することにより不正な操作などを防ぐ意味がある。
+  #このリクエストパラメータをホワイトリスト形式で検証する機能を
+  #ストロングパラメータといいます。
+
   private
   def message_params
     params.require(:message).permit(:name, :age, :body)
